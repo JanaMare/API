@@ -20,7 +20,19 @@ df = df.applymap(str)
 conn = sqlite3.connect('api.db')
 c = conn.cursor()
 
-df.to_sql("api",conn)
+#df.to_sql("api",conn)
+
+val = input(" Enter your value: ")
+
+sql_cmd = "SELECT * FROM api WHERE id='{}'".format(val)
+c.execute(sql_cmd)
+
+#c.execute("SELECT * FROM api WHERE id=? ")
+
+rows = c.fetchall()
+
+for row in rows:
+    print(row)
 
 
 
